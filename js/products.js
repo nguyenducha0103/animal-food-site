@@ -11,10 +11,9 @@ function loadProducts(){
     img_link: "images/p1.png"
 }
     // call api get all product from db
-    let products = [product, product]
+    let products = [product, product,product,product,product,product,product,product,product,product,product]
     let head = ''
-    head+= `
-    `
+    head+= ``
 
     let content;
     for (var i = 0; i < products.length; i++){
@@ -25,7 +24,7 @@ function loadProducts(){
         `
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box" id="box-${i}">
-            <a href="">
+            <a href="details.html">
               <div class="img-box">
                 <img src=${item.img_link} alt="">
               </div>
@@ -49,7 +48,7 @@ function loadProducts(){
           </div>
         </div>
     `
-    $("#container").append(content)
+    $("#row-product").append(content)
     }
     
 }

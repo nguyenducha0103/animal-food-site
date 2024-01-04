@@ -880,5 +880,15 @@ a:focus {
   color: #cbc9c9;
 }
 
+.icon-hover:hover {
+  border-color: #3b71ca !important;
+  background-color: white !important;
+  color: #3b71ca !important;
+}
+
+.icon-hover:hover i {
+  color: #3b71ca !important;
+}
+
 /* end footer section*/
 /*# sourceMappingURL=style.css.map */
