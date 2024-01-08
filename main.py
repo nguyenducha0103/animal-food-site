@@ -11,7 +11,6 @@ import cv2
 import io
 import json
 import time
-from PIL import Image
 from collections import deque
 
 from backend.db.database import DBManager
@@ -27,7 +26,7 @@ app.mount("/data", StaticFiles(directory="data"), name="data")
 
 templates = Jinja2Templates(directory="template")
 
-db = DBManager()
+db = DBManager(host='localhost', port=27017)
 
 def response_data(data=None, msg="Successful", status_code=1):
     return {
@@ -61,9 +60,21 @@ async def get_all_products():
         return response_data(data=new_data)
     else:
         return 0
+    
+@app.get("/products/add")
+async def add_product():
+    pass
+
+@app.post("/login")
+async def login(username:str =  Form(), password:str = Form()):
+    if (username == 'admin') and (password == 'admin'):
+        print('Login successfuly')
+        return 1
+    print('Login Unsuccessfuly')
+    return 0
 
 
 if __name__ == '__main__':
     
 	# start a thread that will perform motion detection
-    uvicorn.run(app, host=HOST, port=PORT, access_log=False)
+    uvicorn.run(app, host=HOST, port=PORT, access_log=True)
