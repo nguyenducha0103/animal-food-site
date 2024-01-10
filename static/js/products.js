@@ -36,9 +36,8 @@ $(document).ready( function() {
                           ${item.name}
                       </h6>
                       <h6>
-                        Price
                         <span>
-                          ${1200}
+                          ${item.price} VNĐ
                         </span>
                       </h6>
                     </div>

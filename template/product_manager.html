@@ -164,12 +164,12 @@
                                                 </div>
                                             </div>
                                             <div class="pl-3 border-left btn-new">
-                                                <button type="button" class="btn btn-primary" data-target="#new-user-modal" data-toggle="modal" id="btn-new-item">
+                                                <button type="button" class="btn btn-primary" data-target="#new-item-modal" data-toggle="modal" id="btn-new-item">
                                                     New Item
                                                 </button>
                                             </div>
-                                            <div class="pl-3 border-left btn-new">
-                                                <button type="button" class="btn btn-primary" data-target="#new-user-modal" data-toggle="modal" id="btn-new-type">
+                                            <div class="pl-3 btn-new">
+                                                <button type="button" class="btn btn-primary" data-target="#new-type-modal" data-toggle="modal" id="btn-new-type">
                                                     New Type
                                                 </button>
                                             </div>
@@ -180,22 +180,8 @@
                                                 <span class="custom-dropdown custom-dropdown--white" >
                                                     <select class="sort-by custom-dropdown__select custom-dropdown__select--white" id="item-fillter">
                                                         <option value="type-all">All</option>
-                                                        <option value="type-0">type 0</option>
-                                                        <option value="type-1">type 1</option>
-                                                        <option value="type-2">type 2</option>
                                                     </select>
                                                 </span>
-                                                
-                                                <!-- <div class="dropdown">
-                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Item Type
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="/template/index.html" >Type 1</a>
-                                                        <a class="dropdown-item" href="">Type 2</a>
-                                                        <a class="dropdown-item" href="">Type 3</a>
-                                                    </div>
-                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
@@ -443,50 +429,51 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade bd-example-modal-lg" role="dialog" aria-modal="true" id="new-user-modal">
+
+        <!-- Add Item dialog -->
+        <div class="modal fade bd-example-modal-lg" role="dialog" aria-modal="true" id="new-item-modal">
             <div class="modal-dialog  modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header d-block text-center pb-3 border-bttom">
-                        <h3 class="modal-title" id="exampleModalCenterTitle02">New User</h3>
+                        <h3 class="modal-title" id="exampleModalCenterTitle02">New Item</h3>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-6">
-                                <div class="form-group mb-3 custom-file-small">
-                                    <label for="exampleInputText01" class="h5">Upload Profile Picture</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile02">
-                                        <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
                                 <div class="form-group mb-3">
-                                    <label for="exampleInputText2" class="h5">Full Name</label>
-                                    <input type="text" class="form-control" id="exampleInputText2" placeholder="Enter your full name">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group mb-3">
-                                    <label for="exampleInputText04" class="h5">Phone Number</label>
-                                    <input type="text" class="form-control" id="exampleInputText04" placeholder="Enter phone number">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group mb-3">
-                                    <label for="exampleInputText006" class="h5">Email</label>
-                                    <input type="text" class="form-control" id="exampleInputText006" placeholder="Enter your Email">
+                                    <label for="exampleInputText2" class="h5">Item Name</label>
+                                    <input type="text" class="form-control" id="item-name" placeholder="Enter your full name">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group mb-3">
                                     <label for="exampleInputText2" class="h5">Type</label>
-                                    <select name="type" class="selectpicker form-control" data-style="py-0">
-                                        <option>Type</option>
-                                        <option>Trainee</option>
-                                        <option>Employee</option>
+                                    <select name="type" class="form-control" data-style="py-0" id="item-type">
                                     </select>
                                 </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText2" class="h5">Number of item</label>
+                                    <input type="number" class="form-control" id="num">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText2" class="h5">Price</label>
+                                    <input type="number" class="form-control" id="price" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="VNĐ">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3 custom-file-small">
+                                    <label for="exampleInputText01" class="h5">Upload Item Picture</label>
+                                    <div class="custom-file">
+                                        <label class="custom-file-label" for="item-image-upload">Choose file</label>
+                                        <input type="file" class="custom-file-input" id="item-image-upload">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="item-image">
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group mb-3">
@@ -503,7 +490,54 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="d-flex flex-wrap align-items-ceter justify-content-center mt-2">
-                                    <div class="btn btn-primary mr-3" data-dismiss="modal">Save</div>
+                                    <div class="btn btn-primary mr-3" data-dismiss="modal" id="save-item-btn">Save</div>
+                                    <div class="btn btn-primary" data-dismiss="modal">Cancel</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Type dialog -->
+        <div class="modal fade bd-example-modal-lg" role="dialog" aria-modal="true" id="new-type-modal">
+            <div class="modal-dialog  modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header d-block text-center pb-3 border-bttom">
+                        <h3 class="modal-title" id="exampleModalCenterTitle02">New Type</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText2" class="h5">Type Name</label>
+                                    <input type="text" class="form-control" id="type-name" placeholder="Enter your full name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3 custom-file-small">
+                                    <label for="exampleInputText01" class="h5">Upload Type Item Picture</label>
+                                    <div class="custom-file">
+                                        <label class="custom-file-label" for="type-image-upload">Choose file</label>
+                                        <input type="file" class="custom-file-input" id="type-image-upload">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText2" class="h5">Role</label>
+                                    <select name="type" class="selectpicker form-control" data-style="py-0">
+                                        <option>Role</option>
+                                        <option>Designer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="type-image">
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="d-flex flex-wrap align-items-ceter justify-content-center mt-2">
+                                    <div class="btn btn-primary mr-3" data-dismiss="modal" id="save-type-btn">Save</div>
                                     <div class="btn btn-primary" data-dismiss="modal">Cancel</div>
                                 </div>
                             </div>
@@ -529,12 +563,14 @@
         <!--===============================================================================================-->	
         <!-- <script src="/static/js/jquery-3.4.1.min.js"></script> -->
         <script src="/static/js/jquery-3.4.1.min.js"></script>
+        
+        <script src="/static/vendor/bootstrap/js/popper.min.js"></script>
+        <script src="/static/vendor/bootstrap/js/bootstrap.js"></script>	
+        <script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-        <script src="/static/js/bootstrap.js"></script>	
+        <!-- <script src="/static/vendor/bootstrap/js/popper.min.js"></script> -->
         <!-- <script src="/static/vendor/jquery/jquery-3.2.1.min.js"></script> -->
     <!--===============================================================================================-->
-        <script src="/static/vendor/bootstrap/js/popper.js"></script>
-        <script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
     <!--===============================================================================================-->
         <script src="/static/vendor/select2/select2.min.js"></script>
         <script src="/static/js/backend-bundle.min.js"></script>
