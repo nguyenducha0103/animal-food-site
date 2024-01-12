@@ -67,6 +67,7 @@ function loadProducts(){
         }
       });
 }
+
 function loadTypes(){
     let url = 'http://127.0.0.1:9000/types/all'
     $.ajax({
@@ -131,6 +132,7 @@ function readURLItem(input) {
 $("#type-image-upload").change(function(){
     readURLType(this);
 });
+
 $("#item-image-upload").change(function(){
     readURLItem(this);
 });
