@@ -70,3 +70,13 @@ class DBManager():
 
         respone = self.p_table.insert_one(data)
         return respone
+    
+    def remove_item(self, item_id):
+        query = {'id': item_id}
+        item_data = self.p_table.find_one(query)
+        if item_data['status_code'] == 1:
+            image_path = item_data['data']['image_link'][1:]
+            os.remove(image_path)
+            res_data = self.p_table.delete_one(query)
+            return res_data
+        return response_data(status_code=0)

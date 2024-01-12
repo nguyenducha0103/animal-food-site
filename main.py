@@ -1,6 +1,7 @@
 import fastapi
 from fastapi import FastAPI, HTTPException, APIRouter, Request, UploadFile, Form
 from fastapi.responses import HTMLResponse, StreamingResponse
+from fastapi.middleware.cors import CORSMiddleware
 from typing_extensions import Annotated
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -20,6 +21,15 @@ HOST = '127.0.0.1'
 PORT = 9000
 
 app = fastapi.FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.mount("/template", StaticFiles(directory="template"), name="template")
 app.mount("/data", StaticFiles(directory="data"), name="data")
@@ -51,7 +61,7 @@ async def get_all_products():
         new_data = []
         for item in data['data']:
             d = {}
-            d['id'] = str(item['_id'])
+            d['id'] = str(item['id'])
             d['name'] = item['name']
             d['type'] = item['type']
             d['quantity'] = item['quantity']
@@ -70,7 +80,7 @@ async def get_all_products():
         new_data = []
         for item in data['data']:
             d = {}
-            d['id'] = str(item['_id'])
+            d['id'] = str(item['id'])
             d['name'] = item['name']
             d['image_link'] = item['image_link']
             new_data.append(d)
@@ -90,6 +100,15 @@ async def add_type(image_base64 :str =  Form(), type_name:str =  Form()):
     image = image_decode(image_base64.split(';')[1].replace('base64,',''))
     response_data = db.add_type(type_name=type_name, image=image)
     return 1
+
+@app.get('/item/remove/{item_id}')
+async def remove_item(item_id : str):
+    print(item_id)
+    response_data = db.remove_item(item_id)
+    if response_data['status_code'] == 1:
+        return 1
+    return 0
+
 
 @app.post("/login")
 async def login(username:str =  Form(), password:str = Form()):
