@@ -174,11 +174,13 @@ $("#save-item-btn").on("click", function() {
     let image_base64 = $("#item-image").val()
     console.log(image_base64)
     let formData = new FormData()
+
     formData.append('item_name', item_name)
     formData.append('image_base64', image_base64)
     formData.append('quantity', quantity)
     formData.append('item_type', item_type)
     formData.append('price', price)
+    
     let url = 'http://127.0.0.1:9000/product/add'
     $.ajax({
         type: "POST",
